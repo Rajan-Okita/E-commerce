@@ -14,6 +14,7 @@ if (isset($_POST['product_image']) && $_POST['product_image']!=""){
     $price = $row['unit_price'];
     $image = $row['product_image'];
     $description=$row['product_description'];
+    $quantity=$row['available_quantity'];
 
     $cartArray = array(
         $product_image=>array(
@@ -22,7 +23,8 @@ if (isset($_POST['product_image']) && $_POST['product_image']!=""){
             'unit_price'=>$price,
             'quantity'=>1,
             'image'=>$image,
-            'product_image'=>$product_image)
+            'product_image'=>$product_image,
+        'available_quantity'=>$quantity)
     );
 
     if(empty($_SESSION["shopping_cart"])) {
@@ -77,6 +79,7 @@ while($row = mysqli_fetch_assoc($result)){
     <div class='name'>".$row['product_name']."</div>
     <div class='description'>".$row['product_description']."</div>
     <div class='price'>$".$row['unit_price']."</div>
+    <div class='price' hidden='hidden'>".$row['available_quantity']."</div>
     <button type='submit' class='buy'>Buy Now</button>
     </form>
     </div>";

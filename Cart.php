@@ -43,6 +43,7 @@ echo $_SESSION['sessionuser'];
                 <td>QUANTITY</td>
                 <td>UNIT PRICE</td>
                 <td>ITEMS TOTAL</td>
+                <td>AVAILABLE QUANTITY</td>
             </tr>
             <?php
             foreach ($_SESSION["shopping_cart"] as $product){
@@ -78,6 +79,7 @@ echo $_SESSION['sessionuser'];
                     </td>
                     <td><?php echo "$".$product["unit_price"]; ?></td>
                     <td><?php echo "$".$product["unit_price"]*$product["quantity"]; ?></td>
+                    <td><?php echo $product["available_quantity"]; ?></td>
                 </tr>
                 <?php
                 $total_price += ($product["unit_price"]*$product["quantity"]);
